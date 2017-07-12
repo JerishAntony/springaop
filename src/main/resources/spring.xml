@@ -11,7 +11,18 @@
         http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
         http://www.springframework.org/schema/aop 
   		http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
-  		
-	<context:component-scan base-package="com.*" />
 
+
+	<aop:aspectj-autoproxy />
+	<context:annotation-config />
+	<context:component-scan base-package="com.*" />
+	<bean id="test" class="com.sample.config.Test">
+		<property name="name" value="jerish"></property>
+		<property name="t" ref="innerTest"></property>
+	</bean>
+	<bean id="innerTest" class="com.sample.config.InnerTest">
+		<property name="dummy" value="Dummy value"></property>
+	</bean>
+	<bean id ="sampleAspect" class="com.sample.config.SampleAspect"></bean>
+	
 </beans>
